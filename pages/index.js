@@ -7,7 +7,6 @@ import { stagger } from '../animations/stagger'
 import { routeAnimation } from '../animations/routeAnimation'
 
 export default function Home() {
-  console.log(process.env.VERCEL_URL)
   return (
     <motion.div
       variants={routeAnimation}
@@ -54,8 +53,7 @@ export default function Home() {
 }
 
 export const getServerSideProps = async (context) => {
-  const res = await fetch(`${process.env.VERCEL_URL}/api/expertise`)
-  const data = await res.json()
+  const data = expertise;
   return {
     props: {
       expertise: data
