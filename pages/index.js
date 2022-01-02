@@ -21,7 +21,7 @@ export default function Home() {
       <h5 className="my-3 font-medium dark:text-white">
         I am currently pursuing Integrated M.Tech in Computer Science
         Engineering from Jaypee Institute of Information Technology, Noida. I am
-        developing apps and websites from my Class 6th and started my
+        developing apps and websites from Class 6th and started my
         Cybersecurity learning from 2018.
       </h5>
       <div
