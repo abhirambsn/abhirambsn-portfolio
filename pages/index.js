@@ -43,7 +43,7 @@ export default function Home() {
               key={expert.title}
               className="bg-gray-200 rounded-lg dark:bg-gray-900 dark:text-white lg:col-span-1 "
             >
-              <ExpertiseCard expertise={expert}  />
+              <ExpertiseCard expertise={expert} />
             </motion.div>
           ))}
         </motion.div>
@@ -53,6 +53,7 @@ export default function Home() {
 }
 
 export const getServerSideProps = async (context) => {
+  console.log(process.env.VERCEL_URL)
   const res = await fetch(`${process.env.VERCEL_URL}/api/expertise`)
   const data = await res.json()
   return {
