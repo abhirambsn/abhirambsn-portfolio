@@ -171,6 +171,15 @@ export const projects = [
     github_url: 'https://github.com/abhirambsn/expense-manager-api',
     category: ['API', 'Backend', 'Node.js', 'Javascript'],
     tags: ['node', 'backend', 'js', 'web', 'api']
+  },
+  {
+    id: 9,
+    name: 'Twitter Clone',
+    description: 'Twitter Clone made using Next.js, Tailwind CSS and Firebase v9',
+    image_link: '/images/twitterclone.png',
+    github_url: 'https://github.com/abhirambsn/twitter-clone',
+    category: ['Next.js', 'React', 'Web', 'Firebase'],
+    tags: ['nextjs', 'react', 'web', 'js']
   }
 ]
 
