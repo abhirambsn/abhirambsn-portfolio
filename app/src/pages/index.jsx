@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../components/Header";
 import MainContainer from "../components/MainContainer";
 import Footer from "../components/Footer";
 import Card from "../components/Card";
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 
 // Icons
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -18,6 +20,9 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { Icon } from "@iconify/react";
 import ProjectRow from "../components/ProjectRow";
+import SkillBar from "../components/SkillBar";
+import WorkExRow from "../components/WorkExRow";
+import { usePortfolioContext } from "../components/PortfolioContext";
 
 const projects = [
   {
@@ -27,6 +32,12 @@ const projects = [
     tech_stack: ["Python", "Docker"],
     icon: faGlobe,
     deployed_at: "Dockerhub",
+    duration: "2 Months",
+    year: "2023",
+    months: "Jan - Oct",
+    github: "https://github.com/abhirambsn/abhirambsn.git",
+    deployed_url: "https://hub.docker.com/abhirambsn/wapp-enum",
+    color: "green",
   },
   {
     title: "Web Application Enumeration Suite (wapp-enum)",
@@ -35,21 +46,91 @@ const projects = [
     tech_stack: ["Python", "Docker"],
     icon: faGlobe,
     deployed_at: "Dockerhub",
+    duration: "2 Months",
+    year: "2023",
+    months: "Jan - Oct",
+    github: "https://github.com/abhirambsn/abhirambsn.git",
+    deployed_url: "https://hub.docker.com/abhirambsn/wapp-enum",
+    color: "blue",
+  },
+];
+
+const workExp = [
+  {
+    company_name: "PwC India",
+    designation: "Intern / Trainee",
+    color: "orange",
+    logo: "https://logos-world.net/wp-content/uploads/2022/01/PwC-PricewaterhouseCoopers-Logo.png",
+    description:
+      "freestar freestar \
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam at nisl eget neque placerat porta id in augue. Proin risus est, faucibus a iaculis sit amet, placerat nec odio. Proin eget lorem nulla. In laoreet massa aliquet dui dignissim, at malesuada felis accumsan. Phasellus posuere nisl id facilisis ultrices. Pellentesque ut elementum ipsum. Ut euismod, mauris id bibendum vehicula, dolor sapien malesuada leo, imperdiet hendrerit arcu ipsum sed quam. Donec faucibus in purus sed ultrices. Duis sed lobortis ante, sit.",
+    tech_stack_arr: [
+      "Docker",
+      "Ethical Hacking",
+      "Cyber Security",
+      "Penetration Testing",
+      "Kali Linux",
+    ],
+    duration: "3 Months",
+    months: "May to Aug",
+    year: "2023",
+    word_lim: 70,
   },
   {
-    title: "Web Application Enumeration Suite (wapp-enum)",
+    company_name: "Nucleus Software Exports Ltd.",
+    designation: "Project Intern",
+    color: "sky",
+    logo: "https://stories.nucleussoftware.com/wp-content/uploads/2021/10/Logo_white.png",
     description:
-      "A Complete Web Application Enumeration Suite written in Python, with extensible user scripts, deployed to docker as a Docker Image",
-    tech_stack: ["Python", "Docker"],
-    icon: faGlobe,
-    deployed_at: "Dockerhub",
+      "freestar freestar \
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam at nisl eget neque placerat porta id in augue. Proin risus est, faucibus a iaculis sit amet, placerat nec odio. Proin eget lorem nulla. In laoreet massa aliquet dui dignissim, at malesuada felis accumsan. Phasellus posuere nisl id facilisis ultrices. Pellentesque ut elementum ipsum. Ut euismod, mauris id bibendum vehicula, dolor sapien malesuada leo, imperdiet hendrerit arcu ipsum sed quam. Donec faucibus in purus sed ultrices. Duis sed lobortis ante, sit.",
+    tech_stack_arr: ["Java", "HTML", "CSS3", "JSP Servelets"],
+    duration: "1 Month",
+    months: "Jan to Feb",
+    year: "2022",
+    word_lim: 100,
+  },
+  {
+    company_name: "IEEE Student Branch JIIT",
+    designation: "Webmaster",
+    color: "blue",
+    logo: "https://yt3.googleusercontent.com/ytc/AOPolaQatLZbIphjHuBVOcxO71FhCFclxQ0ya_mrPbYEdQ=s900-c-k-c0x00ffffff-no-rj",
+    description:
+      "freestar freestar \
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam at nisl eget neque placerat porta id in augue. Proin risus est, faucibus a iaculis sit amet, placerat nec odio. Proin eget lorem nulla. In laoreet massa aliquet dui dignissim, at malesuada felis accumsan. Phasellus posuere nisl id facilisis ultrices. Pellentesque ut elementum ipsum. Ut euismod, mauris id bibendum vehicula, dolor sapien malesuada leo, imperdiet hendrerit arcu ipsum sed quam. Donec faucibus in purus sed ultrices. Duis sed lobortis ante, sit.",
+    tech_stack_arr: [
+      "Docker",
+      "Javascript",
+      "Website Administration",
+      "Web Development",
+    ],
+    duration: "1 Year",
+    months: "Jun 2022 to May 2023",
+    year: "2022 - 2023",
+    word_lim: 55,
+  },
+  {
+    company_name: "Google Developer Students Club",
+    designation: "Technical Coordinator",
+    color: "",
+    logo: "https://logogen.gdscasu.com/logos/gdsc-logo.png",
+    description:
+      "freestar freestar \
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam at nisl eget neque placerat porta id in augue. Proin risus est, faucibus a iaculis sit amet, placerat nec odio. Proin eget lorem nulla. In laoreet massa aliquet dui dignissim, at malesuada felis accumsan. Phasellus posuere nisl id facilisis ultrices. Pellentesque ut elementum ipsum. Ut euismod, mauris id bibendum vehicula, dolor sapien malesuada leo, imperdiet hendrerit arcu ipsum sed quam. Donec faucibus in purus sed ultrices. Duis sed lobortis ante, sit.",
+    tech_stack_arr: ["Docker", "Web Development", "Android", "App Development"],
+    duration: "1 Year",
+    months: "Jul 2022 to Jun 2023",
+    year: "2022 - 2023",
+    word_lim: 75,
   },
 ];
 
 const HomePage = () => {
+  const { pageVisits, dark, changeTheme } = usePortfolioContext();
+
   return (
     <>
-      <Header />
+      <Header pageVisits={pageVisits} dark={dark} changeTheme={changeTheme} />
       <MainContainer>
         <div className="flex mx-4 lg:mx-0 flex-col lg:flex-row items-start justify-between gap-4">
           <Card className="flex flex-1 flex-col gap-6 w-full lg:w-auto">
@@ -161,13 +242,76 @@ const HomePage = () => {
         </div>
 
         <div className="flex mx-4 lg:mx-0 items-center justify-between">
+          <h2 className="text-center text-white text-3xl my-8">
+            Work Experience
+          </h2>
+        </div>
+        <div className="mx-4 lg:mx-0 flex flex-col md:flex-row gap-4 w-full space-x-2">
+          <Carousel showThumbs={false} className="w-full">
+            {workExp.map((exp, i) => (
+              <WorkExRow
+                key={i}
+                company_name={exp.company_name}
+                logo={exp.logo}
+                description={exp.description}
+                tech_stack_arr={exp.tech_stack_arr}
+                designation={exp.designation}
+                duration={exp.duration}
+                year={exp.year}
+                months={exp.months}
+                color={exp.color}
+                word_lim={exp.word_lim}
+              />
+            ))}
+          </Carousel>
+        </div>
+
+        <div className="flex mx-4 lg:mx-0 items-center justify-between">
+          <h2 className="text-center text-white text-3xl my-8">Skills</h2>
+        </div>
+        <div className="mx-4 lg:mx-0 grid grid-cols-1 lg:grid-cols-3 gap-4 w-full lg:space-x-2">
+          <Card className="flex-1 flex flex-col gap-5">
+            <h2 className="text-lg text-white">Cybersecurity</h2>
+            <SkillBar
+              name="Penetration Testing"
+              percentage={"50"}
+              color={"green"}
+            />
+            <SkillBar
+              name="Penetration Testing"
+              percentage={"100"}
+              color="blue"
+            />
+            <SkillBar
+              name="Penetration Testing"
+              percentage={"50"}
+              color="purple"
+            />
+          </Card>
+          <Card className="flex-1 flex flex-col gap-5">
+            <h2 className="text-lg text-white">Development and Devops</h2>
+            <SkillBar name="Javascript" percentage={"50"} color={"indigo"} />
+            <SkillBar name="Python" percentage={"50"} color="yellow" />
+            <SkillBar name="Bash" percentage={"50"} color="orange" />
+          </Card>
+          <Card className="flex-1 flex flex-col gap-5">
+            <h2 className="text-lg text-white">Soft Skills</h2>
+            <SkillBar name="Javascript" percentage={"50"} color="teal" />
+            <SkillBar name="Python" percentage={"50"} color="cyan" />
+            <SkillBar name="Bash" percentage={"50"} />
+          </Card>
+        </div>
+
+        <div className="flex mx-4 lg:mx-0 items-center justify-between">
           <h2 className="text-center text-white text-3xl my-8">My Projects</h2>
-          <button className="flex rounded-full bg-gray-800 p-4 hover:bg-gray-900 transition-all ease-in-out duration-150 items-center justify-center space-x-2">
+          <a
+            href="/projects"
+            className="flex rounded-full bg-gray-50 text-gray-900 p-4 hover:bg-gray-800 hover:text-gray-50 transition-all ease-in-out duration-150 items-center justify-center space-x-2"
+          >
             <span className="hidden lg:block">View All Projects</span>
             <FontAwesomeIcon icon={faArrowRight} />
-          </button>
+          </a>
         </div>
-        {/* <div className="w-full bg-red-800"> */}
         <div className="flex mx-4 lg:mx-0">
           <div className="flex flex-1 flex-col gap-5">
             {projects.map((project, i) => (
@@ -177,18 +321,17 @@ const HomePage = () => {
                 icon={project.icon}
                 description={project.description}
                 tech_stack_arr={project.tech_stack}
-                duration="2 Months"
-                year="2023"
-                months="Jan - Oct"
-                github="https://github.com/abhirambsn/abhirambsn.git"
-                deployed_url="https://hub.docker.com/abhirambsn/wapp-enum"
+                duration={project.duration}
+                year={project.year}
+                months={project.months}
+                github={project.github}
+                deployed_url={project.deployed_url}
                 deployed_at={project.deployed_at}
-                color="green"
+                color={project.color}
               />
             ))}
           </div>
         </div>
-        {/* </div> */}
       </MainContainer>
       <Footer />
     </>

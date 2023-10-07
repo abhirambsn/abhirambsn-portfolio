@@ -1,12 +1,15 @@
-import { RouterProvider } from 'react-router-dom'
-import router from './router'
+import { RouterProvider } from "react-router-dom";
+import router from "./router";
+import { PortfolioProvider } from "./components/PortfolioContext";
 
 function App() {
   return (
     <>
-      <RouterProvider router={router} />
+      <PortfolioProvider>
+        <RouterProvider router={router} />
+      </PortfolioProvider>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

@@ -5,6 +5,15 @@ import { faUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
 import Pill from "./Pill";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 
+const colorMapping = {
+    docker: "blue",
+    python: "yellow",
+    javascript: "yellow",
+    nodejs: "green",
+    c: "white",
+    cpp: "white"
+}
+
 const ProjectRow = ({
   icon,
   title,
@@ -29,14 +38,13 @@ const ProjectRow = ({
         </div>
         <p className="mt-5 text-justify">{description}</p>
       </Card>
-      <div className="flex-1 flex flex-col gap-1">
+      <div className="flex-1 w-full lg:w-auto flex flex-col gap-1">
         <Card className="group hover:bg-sky-500 hover:cursor-pointer flex flex-col gap-2 focus-xs">
           <div className="flex items-center gap-3">
             <span className="group-hover:text-white text-gray-500">Visit</span>
             <FontAwesomeIcon
               className="group-hover:text-white text-gray-400"
               icon={faUpRightFromSquare}
-              size="md"
             />
           </div>
           <span className="text-white text-lg">
@@ -45,14 +53,14 @@ const ProjectRow = ({
         </Card>
         <Card className="flex flex-col gap-2">
           <span className="text-gray-500">Built using</span>
-          <div className="flex flex-col md:flex-row items-center gap-2 md:gap-0">
+          <div className="flex flex-col md:flex-row items-center gap-2">
             {tech_stack_arr.map((ts, key) => (
-              <Pill text={ts} key={key} />
+              <Pill text={ts} key={key} bgColor={colorMapping[ts.toLowerCase()]} />
             ))}
           </div>
         </Card>
       </div>
-      <div className="flex-1 flex flex-col gap-3">
+      <div className="flex-1 w-full lg:w-auto flex flex-col gap-3">
         <Card className="flex flex-1 p-6 items-center justify-center gap-2 hover:bg-green-500 hover:cursor-pointer focus-xs">
           <FontAwesomeIcon icon={faGithub} size="2x" />
           <span className="text-gray-50">GitHub</span>
