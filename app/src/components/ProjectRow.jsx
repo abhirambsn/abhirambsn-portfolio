@@ -6,13 +6,13 @@ import Pill from "./Pill";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 
 const colorMapping = {
-    docker: "blue",
-    python: "yellow",
-    javascript: "yellow",
-    nodejs: "green",
-    c: "white",
-    cpp: "white"
-}
+  docker: "blue",
+  python: "yellow",
+  javascript: "yellow",
+  nodejs: "green",
+  c: "white",
+  cpp: "white",
+};
 
 const ProjectRow = ({
   icon,
@@ -47,15 +47,17 @@ const ProjectRow = ({
               icon={faUpRightFromSquare}
             />
           </div>
-          <span className="text-white text-lg">
-            {deployed_at}
-          </span>
+          <span className="text-white text-lg">{deployed_at}</span>
         </Card>
         <Card className="flex flex-col gap-2">
           <span className="text-gray-500">Built using</span>
           <div className="flex flex-col md:flex-row items-center gap-2">
             {tech_stack_arr.map((ts, key) => (
-              <Pill text={ts} key={key} bgColor={colorMapping[ts.toLowerCase()]} />
+              <Pill
+                text={ts}
+                key={key}
+                bgColor={colorMapping[ts.toLowerCase()]}
+              />
             ))}
           </div>
         </Card>
