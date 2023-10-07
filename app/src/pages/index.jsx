@@ -31,9 +31,9 @@ const HomePage = () => {
     <>
       <Header />
       <MainContainer>
-        <div className="flex items-start justify-between gap-4">
-          <Card className="flex flex-1 flex-col gap-6">
-            <div className="flex items-center space-x-3">
+        <div className="flex mx-4 lg:mx-0 flex-col lg:flex-row items-start justify-between gap-4">
+          <Card className="flex flex-1 flex-col gap-6 w-full lg:w-auto">
+            <div className="flex flex-col lg:flex-row items-center gap-3">
               <img
                 className="h-24 w-24 rounded-lg object-cover"
                 src="https://via.placeholder.com/150"
@@ -51,13 +51,13 @@ const HomePage = () => {
             </span>
           </Card>
 
-          <div className="div flex flex-1 flex-col gap-6 h-full">
-            <div className="flex items-center gap-4 w-full">
+          <div className="div flex flex-1 flex-col gap-6 h-full w-full lg:w-auto">
+            <div className="flex items-center gap-4 w-full justify-between lg:justify-normal">
               <a
                 href="https://github.com/abhirambsn"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex-1 mx-auto"
+                className="flex-0 md:flex-1"
               >
                 <Card className="px-5 mx-auto hover:bg-green-400 focus hover:cursor-pointer flex items-center space-x-2">
                   <FontAwesomeIcon icon={faGithub} size="2x" />
@@ -68,7 +68,7 @@ const HomePage = () => {
                 href="https://linkedin.com/in/bhallamudi-sai-narasimha-abhiram/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex-1"
+                className="flex-0 md:flex-1"
               >
                 <Card className="px-5 mx-auto hover:bg-blue-400 focus duration-150 hover:cursor-pointer flex items-center space-x-2">
                   <FontAwesomeIcon icon={faLinkedin} size="2x" />
@@ -79,7 +79,7 @@ const HomePage = () => {
                 href="/resume"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex-1"
+                className="flex-0 md:flex-1"
               >
                 <Card className="px-5 mx-auto hover:bg-orange-400 focus hover:cursor-pointer flex items-center space-x-2">
                   <FontAwesomeIcon icon={faDownload} size="2x" />
@@ -87,19 +87,20 @@ const HomePage = () => {
                 </Card>
               </a>
             </div>
+            
             <Card className="flex flex-1 flex-col gap-4">
               <span className="text-gray-500">Based in</span>
               <span className="text-gray-50 text-lg">Noida, India 🇮🇳</span>
               <div className="flex flex-col gap-1">
                 <span className="text-gray-500">Studying at</span>
-                <span className="text-gray-50 text-lg">
+                <span className="text-gray-50 text">
                   Jaypee Institute of Information Technology, Noida
                 </span>
               </div>
             </Card>
           </div>
 
-          <Card className="flex flex-1 flex-col gap-3 items-center">
+          <Card className="flex flex-1 w-full lg:w-auto flex-col gap-3 items-center">
             <h6 className="text-gray-50 font-semibold text-center">
               Other Profiles
             </h6>
@@ -111,7 +112,7 @@ const HomePage = () => {
             >
               <Card className="bg-gray-900 px-3 mx-auto hover:bg-red-500 focus-xs hover:cursor-pointer flex items-center space-x-2">
                 <Icon icon="simple-icons:tryhackme" fontSize="28" />
-                <span className="hidden md:block">Tryhackme</span>
+                <span>Tryhackme</span>
               </Card>
             </a>
             <a
@@ -122,7 +123,7 @@ const HomePage = () => {
             >
               <Card className="bg-gray-900 px-3 mx-auto hover:bg-green-500 focus-xs hover:cursor-pointer flex items-center space-x-2">
                 <Icon icon="simple-icons:hackthebox" fontSize="28" />
-                <span className="hidden md:block">Hackthebox</span>
+                <span>Hackthebox</span>
               </Card>
             </a>
             <a
@@ -133,7 +134,7 @@ const HomePage = () => {
             >
               <Card className="bg-gray-900 px-2 py-2 mx-auto hover:bg-orange-600 focus-xs hover:cursor-pointer flex items-center space-x-2">
                 <FontAwesomeIcon icon={faGitlab} size="2x" />
-                <span className="hidden md:block">GitLab</span>
+                <span>GitLab</span>
               </Card>
             </a>
           </Card>
