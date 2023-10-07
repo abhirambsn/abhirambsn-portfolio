@@ -11,11 +11,31 @@ import {
   faLinkedin,
   faGitlab,
 } from "@fortawesome/free-brands-svg-icons";
-import { faDownload, faGlobe } from "@fortawesome/free-solid-svg-icons";
+import {
+  faArrowRight,
+  faDownload,
+  faGlobe,
+} from "@fortawesome/free-solid-svg-icons";
 import { Icon } from "@iconify/react";
 import ProjectRow from "../components/ProjectRow";
 
 const projects = [
+  {
+    title: "Web Application Enumeration Suite (wapp-enum)",
+    description:
+      "A Complete Web Application Enumeration Suite written in Python, with extensible user scripts, deployed to docker as a Docker Image",
+    tech_stack: ["Python", "Docker"],
+    icon: faGlobe,
+    deployed_at: "Dockerhub",
+  },
+  {
+    title: "Web Application Enumeration Suite (wapp-enum)",
+    description:
+      "A Complete Web Application Enumeration Suite written in Python, with extensible user scripts, deployed to docker as a Docker Image",
+    tech_stack: ["Python", "Docker"],
+    icon: faGlobe,
+    deployed_at: "Dockerhub",
+  },
   {
     title: "Web Application Enumeration Suite (wapp-enum)",
     description:
@@ -87,7 +107,7 @@ const HomePage = () => {
                 </Card>
               </a>
             </div>
-            
+
             <Card className="flex flex-1 flex-col gap-4">
               <span className="text-gray-500">Based in</span>
               <span className="text-gray-50 text-lg">Noida, India 🇮🇳</span>
@@ -140,9 +160,16 @@ const HomePage = () => {
           </Card>
         </div>
 
-        <h2 className="text-center text-white text-3xl my-8">My Projects</h2>
-        <div className="w-full mx-auto">
-          <div className="flex flex-col space-y-2 w-full">
+        <div className="flex mx-4 lg:mx-0 items-center justify-between">
+          <h2 className="text-center text-white text-3xl my-8">My Projects</h2>
+          <button className="flex rounded-full bg-gray-800 p-4 hover:bg-gray-900 transition-all ease-in-out duration-150 items-center justify-center space-x-2">
+            <span className="hidden lg:block">View All Projects</span>
+            <FontAwesomeIcon icon={faArrowRight} />
+          </button>
+        </div>
+        {/* <div className="w-full bg-red-800"> */}
+        <div className="flex mx-4 lg:mx-0">
+          <div className="flex flex-1 flex-col gap-5">
             {projects.map((project, i) => (
               <ProjectRow
                 key={i}
@@ -161,6 +188,7 @@ const HomePage = () => {
             ))}
           </div>
         </div>
+        {/* </div> */}
       </MainContainer>
       <Footer />
     </>
