@@ -165,6 +165,83 @@ export const PortfolioProvider = ({ children }) => {
       word_lim: 75,
     },
   ];
+
+  const certificates = [
+    {
+      name: "Smart India Hackathon - Winner",
+      description: "",
+      image: "https://via.placeholder.com/200",
+      url: "https://picsum.photos/300",
+      awarded_by: "Ministry of Education, Government of India",
+      awarded_on: "29th August 2022",
+    },
+    {
+      name: "Techacks 3.0 Winner",
+      description: "",
+      image: "https://picsum.photos/200",
+      url: "https://picsum.photos/300",
+      awarded_by: "Ministry of Education, Government of India",
+      awarded_on: "29th August 2022",
+    },
+    {
+      name: "ETH For All - Winner",
+      description: "",
+      image: "https://via.placeholder.com/200",
+      url: "https://picsum.photos/300",
+      awarded_by: "Ministry of Education, Government of India",
+      awarded_on: "29th August 2022",
+    },
+    {
+      name: "ETH For All - Winner",
+      description: "",
+      image: "https://via.placeholder.com/200",
+      url: "https://picsum.photos/300",
+      awarded_by: "Ministry of Education, Government of India",
+      awarded_on: "29th August 2022",
+    },
+    {
+      name: "ETH For All - Winner",
+      description: "",
+      image: "https://via.placeholder.com/200",
+      url: "https://picsum.photos/300",
+      awarded_by: "Ministry of Education, Government of India",
+      awarded_on: "29th August 2022",
+    },
+  ];
+
+  const education = [
+    {
+      institute_name: "Jaypee Institute of Information Technology",
+      percentage: "8.3",
+      course_name: "Integrated M.Tech",
+      discipline: "Computer Science and Engineering",
+      start: "2020",
+      end: "2025",
+      metric: "CGPA",
+      color: "sky"
+    },
+    {
+      institute_name: "Indirapuram Public School, Indirapuram",
+      percentage: "91.0",
+      course_name: "Class 12",
+      discipline: "Central Board of Secondary Education",
+      start: "2018",
+      end: "2020",
+      metric: "Percentage",
+      color: "red"
+    },
+    {
+      institute_name: "Indirapuram Public School, Indirapuram",
+      percentage: "92.6",
+      course_name: "Class 10",
+      discipline: "Central Board of Secondary Education",
+      start: "2017",
+      end: "2028",
+      metric: "Percentage",
+      color: "red"
+    },
+  ];
+
   const [pageVisits, setPageVisits] = useState(0);
   const [dark, setDark] = useState(true);
 
@@ -184,6 +261,8 @@ export const PortfolioProvider = ({ children }) => {
         changeTheme,
         workExp,
         projects,
+        certificates,
+        education
       }}
     >
       {children}
