@@ -166,39 +166,45 @@ const HomePage = () => {
         <div className="mx-4 lg:mx-0 grid grid-cols-1 lg:grid-cols-3 gap-4 w-full lg:space-x-2">
           <Card className="flex-1 flex flex-col gap-5">
             <h2 className="text-lg text-white">Cybersecurity</h2>
-            {skills
-              .filter((s) => s.category === "Cybersecurity")
-              .map((skill) => (
-                <SkillBar
-                  name={skill.name}
-                  percentage={skill.percentage}
-                  color={skill.color}
-                />
-              ))}
+            <div className="flex flex-col max-w-4xl lg:w-auto">
+              {skills
+                .filter((s) => s.category === "Cybersecurity")
+                .map((skill) => (
+                  <SkillBar
+                    name={skill.name}
+                    percentage={skill.percentage}
+                    color={skill.color}
+                  />
+                ))}
+            </div>
           </Card>
           <Card className="flex-1 flex flex-col gap-5">
             <h2 className="text-lg text-white">Development and Devops</h2>
-            {skills
-              .filter((s) => s.category === "Development and Devops")
-              .map((skill) => (
-                <SkillBar
-                  name={skill.name}
-                  percentage={skill.percentage}
-                  color={skill.color}
-                />
-              ))}
+            <div className="flex flex-col max-w-4xl lg:w-auto">
+              {skills
+                .filter((s) => s.category === "Development and Devops")
+                .map((skill) => (
+                  <SkillBar
+                    name={skill.name}
+                    percentage={skill.percentage}
+                    color={skill.color}
+                  />
+                ))}
+            </div>
           </Card>
           <Card className="flex-1 flex flex-col gap-5">
             <h2 className="text-lg text-white">Soft Skills</h2>
-            {skills
-              .filter((s) => s.category === "Soft Skills")
-              .map((skill) => (
-                <SkillBar
-                  name={skill.name}
-                  percentage={skill.percentage}
-                  color={skill.color}
-                />
-              ))}
+            <div className="flex flex-col max-w-4xl lg:w-auto">
+              {skills
+                .filter((s) => s.category === "Soft Skills")
+                .map((skill) => (
+                  <SkillBar
+                    name={skill.name}
+                    percentage={skill.percentage}
+                    color={skill.color}
+                  />
+                ))}
+            </div>
           </Card>
         </div>
 

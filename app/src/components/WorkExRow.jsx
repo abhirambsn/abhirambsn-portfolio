@@ -47,7 +47,7 @@ const WorkExRow = ({
   return (
     <div className="flex gap-2 items-start flex-col lg:flex-row mx-4 lg:mx-0">
       <Card
-        className={`w-full bg-gradient-to-tr from-${color}-600 to-${color}-500 text-white max-w-sm h-full`}
+        className={`w-full bg-gradient-to-tr from-${color}-600 to-${color}-500 text-white w-full lg:max-w-sm h-full`}
       >
         <div className="flex flex-col items-center gap-3">
           <img src={logo} className="w-32 h-32 rounded-lg object-contain" />

@@ -31,7 +31,7 @@ const ProjectRow = ({
   return (
     <div className="flex gap-2 items-start flex-col lg:flex-row">
       <Card
-        className={`bg-gradient-to-tr from-${color}-600 to-${color}-500 text-white max-w-sm h-full`}
+        className={`bg-gradient-to-tr from-${color}-600 to-${color}-500 text-white w-full lg:max-w-sm h-full`}
       >
         <div className="flex items-center gap-3">
           <FontAwesomeIcon icon={icon} size="xl" />
