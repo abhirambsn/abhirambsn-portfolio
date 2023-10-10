@@ -13,6 +13,10 @@ const ProjectsPage = () => {
   const [filteredProjects, setFilteredProjects] = useState([]);
 
   useEffect(() => {
+    document.title = "Abhiram B.S.N. | Projects"
+  }, []);
+  
+  useEffect(() => {
     if (searchTerm.length === 0 || searchTerm === "")
       setFilteredProjects(projects);
     setFilteredProjects(

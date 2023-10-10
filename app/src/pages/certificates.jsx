@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { usePortfolioContext } from "../components/PortfolioContext";
 import Header from "../components/Header";
 import MainContainer from "../components/MainContainer";
@@ -7,6 +7,10 @@ import CertificateCard from "../components/CertificateCard";
 
 const CertificatesPage = () => {
   const { dark, changeTheme, certificates } = usePortfolioContext();
+
+  useEffect(() => {
+    document.title = "Abhiram B.S.N. | Projects";
+  }, []);
 
   return (
     <>

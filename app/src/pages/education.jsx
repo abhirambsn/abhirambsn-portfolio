@@ -1,13 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../components/Header";
 import MainContainer from "../components/MainContainer";
 import Footer from "../components/Footer";
 import { usePortfolioContext } from "../components/PortfolioContext";
 import EducationCard from "../components/EducationCard";
 
-const ProjectsPage = () => {
+const EducationPage = () => {
   const { dark, changeTheme, education } = usePortfolioContext();
-  const [searchTerm, setSearchTerm] = useState("");
+
+  useEffect(() => {
+    document.title = "Abhiram B.S.N. | Education";
+  }, []);
 
   return (
     <>
@@ -40,4 +43,4 @@ const ProjectsPage = () => {
   );
 };
 
-export default ProjectsPage;
+export default EducationPage;
