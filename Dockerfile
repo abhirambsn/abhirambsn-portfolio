@@ -1,4 +1,4 @@
-FROM node:latest as builder
+FROM --platform=$TARGETPLATFORM node:latest as builder
 
 ARG spaceid
 ARG accesstoken
@@ -10,7 +10,7 @@ RUN npm install
 COPY ./app .
 RUN npm run build
 
-FROM nginx:latest
+FROM nginx:mainline-alpine3.18-slim
 COPY --from=builder /app/dist /usr/share/nginx/html
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
