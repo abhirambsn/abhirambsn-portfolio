@@ -27,7 +27,7 @@ import { usePortfolioContext } from "../components/PortfolioContext";
 const HomePage = () => {
   const { dark, changeTheme, projects, workExp, myself, skills } =
     usePortfolioContext();
-
+    
   return (
     <>
       <Header dark={dark} changeTheme={changeTheme} />
@@ -73,7 +73,7 @@ const HomePage = () => {
                 </Card>
               </a>
               <a
-                href="/resume"
+                href={myself.resume?.fields.file.url}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex-0 md:flex-1"
@@ -169,9 +169,10 @@ const HomePage = () => {
             <div className="flex flex-col max-w-4xl lg:w-auto">
               {skills
                 .filter((s) => s.category === "Cybersecurity")
-                .map((skill) => (
+                .map((skill, i) => (
                   <SkillBar
                     name={skill.name}
+                    key={i}
                     percentage={skill.percentage}
                     color={skill.color}
                   />
@@ -183,8 +184,9 @@ const HomePage = () => {
             <div className="flex flex-col max-w-4xl lg:w-auto">
               {skills
                 .filter((s) => s.category === "Development and Devops")
-                .map((skill) => (
+                .map((skill, i) => (
                   <SkillBar
+                  key={9+i}
                     name={skill.name}
                     percentage={skill.percentage}
                     color={skill.color}
@@ -197,9 +199,10 @@ const HomePage = () => {
             <div className="flex flex-col max-w-4xl lg:w-auto">
               {skills
                 .filter((s) => s.category === "Soft Skills")
-                .map((skill) => (
+                .map((skill, i) => (
                   <SkillBar
                     name={skill.name}
+                    key={4+i}
                     percentage={skill.percentage}
                     color={skill.color}
                   />
