@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-const Header = ({ pageVisits, changeTheme, dark }) => {
+const Header = ({ changeTheme, dark }) => {
   const [currentTime, setCurrentTime] = useState(
     new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" })
   );

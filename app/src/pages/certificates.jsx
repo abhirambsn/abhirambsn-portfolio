@@ -6,11 +6,12 @@ import Footer from "../components/Footer";
 import CertificateCard from "../components/CertificateCard";
 
 const CertificatesPage = () => {
-  const { pageVisits, dark, changeTheme, certificates } = usePortfolioContext();
+  const { dark, changeTheme, certificates } = usePortfolioContext();
+  console.log(certificates);
 
   return (
     <>
-      <Header pageVisits={pageVisits} dark={dark} changeTheme={changeTheme} />
+      <Header dark={dark} changeTheme={changeTheme} />
       <MainContainer>
         <div className="mx-4 lg:mx-0">
           <h1 className="text-xl lg:text-2xl font-bold mb-3 lg:mb-1 text-center lg:text-left">
@@ -23,7 +24,7 @@ const CertificatesPage = () => {
               key={i}
               name={certificate.name}
               description={certificate.description}
-              image={certificate.image}
+              image={certificate.image?.fields.url}
               url={certificate.url}
               awarded_by={certificate.awarded_by}
               awarded_on={certificate.awarded_on}

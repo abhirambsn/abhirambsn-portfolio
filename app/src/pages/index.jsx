@@ -12,9 +12,11 @@ import {
   faGithub,
   faLinkedin,
   faGitlab,
+  faYoutube,
 } from "@fortawesome/free-brands-svg-icons";
 import {
   faArrowRight,
+  faDesktop,
   faDownload,
   faGlobe,
 } from "@fortawesome/free-solid-svg-icons";
@@ -23,39 +25,36 @@ import ProjectRow from "../components/ProjectRow";
 import SkillBar from "../components/SkillBar";
 import WorkExRow from "../components/WorkExRow";
 import { usePortfolioContext } from "../components/PortfolioContext";
+import useContentful from "../hooks/useContentful";
 
 const HomePage = () => {
-  const { pageVisits, dark, changeTheme, projects, workExp } =
+  const { dark, changeTheme, projects, workExp, myself } =
     usePortfolioContext();
 
   return (
     <>
-      <Header pageVisits={pageVisits} dark={dark} changeTheme={changeTheme} />
+      <Header dark={dark} changeTheme={changeTheme} />
       <MainContainer>
         <div className="flex mx-4 lg:mx-0 flex-col lg:flex-row items-start justify-between gap-4">
           <Card className="flex flex-1 flex-col gap-6 w-full lg:w-auto">
             <div className="flex flex-col lg:flex-row items-center gap-3">
               <img
                 className="h-24 w-24 rounded-lg object-cover"
-                src="https://via.placeholder.com/150"
+                src={myself.profilePic?.fields.file.url}
               />
-              <h3 className="text-xl text-gray-100 font-bold">
-                Abhiram B.S.N.
-              </h3>
+              <h3 className="text-xl text-gray-100 font-bold">{myself.name}</h3>
             </div>
 
-            <span className="text-gray-500 text-lg">
-              Student, Cybersecurity, Penetration Testing
-            </span>
+            <span className="text-gray-500 text-lg">{myself.tagline}</span>
             <span className="text-gray-50 text-xl font-semibold">
-              Ethical Hacker
+              {myself.title}
             </span>
           </Card>
 
           <div className="div flex flex-1 flex-col gap-6 h-full w-full lg:w-auto">
             <div className="flex items-center gap-4 w-full justify-between lg:justify-normal">
               <a
-                href="https://github.com/abhirambsn"
+                href={myself.github}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex-0 md:flex-1"
@@ -66,7 +65,7 @@ const HomePage = () => {
                 </Card>
               </a>
               <a
-                href="https://linkedin.com/in/bhallamudi-sai-narasimha-abhiram/"
+                href={myself.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex-0 md:flex-1"
@@ -91,12 +90,10 @@ const HomePage = () => {
 
             <Card className="flex flex-1 flex-col gap-4">
               <span className="text-gray-500">Based in</span>
-              <span className="text-gray-50 text-lg">Noida, India 🇮🇳</span>
+              <span className="text-gray-50 text-lg">{myself.basedin}</span>
               <div className="flex flex-col gap-1">
                 <span className="text-gray-500">Studying at</span>
-                <span className="text-gray-50 text">
-                  Jaypee Institute of Information Technology, Noida
-                </span>
+                <span className="text-gray-50 text">{myself.studying_at}</span>
               </div>
             </Card>
           </div>
@@ -106,7 +103,7 @@ const HomePage = () => {
               Other Profiles
             </h6>
             <a
-              href="https://app.hackthebox.com/profile/397089"
+              href={myself.tryhackme}
               target="_blank"
               rel="noopener noreferrer"
               className="w-full"
@@ -117,7 +114,7 @@ const HomePage = () => {
               </Card>
             </a>
             <a
-              href="https://tryhackme.com/p/abhirambsn"
+              href={myself.hackthebox}
               target="_blank"
               rel="noopener noreferrer"
               className="w-full"
@@ -128,14 +125,14 @@ const HomePage = () => {
               </Card>
             </a>
             <a
-              href="https://gitlab.com/abhirambsn/"
+              href={myself.youtube}
               target="_blank"
               rel="noopener noreferrer"
               className="w-full"
             >
               <Card className="bg-gray-900 px-2 py-2 mx-auto hover:bg-orange-600 focus-xs hover:cursor-pointer flex items-center space-x-2">
-                <FontAwesomeIcon icon={faGitlab} size="2x" />
-                <span>GitLab</span>
+                <FontAwesomeIcon icon={faYoutube} size="2x" />
+                <span>Youtube Channel</span>
               </Card>
             </a>
           </Card>
@@ -152,7 +149,7 @@ const HomePage = () => {
               <WorkExRow
                 key={i}
                 company_name={exp.company_name}
-                logo={exp.logo}
+                logo={exp.logo?.fields.file.url}
                 description={exp.description}
                 tech_stack_arr={exp.tech_stack_arr}
                 designation={exp.designation}
@@ -218,7 +215,7 @@ const HomePage = () => {
               <ProjectRow
                 key={i}
                 title={project.title}
-                icon={project.icon}
+                icon={faDesktop}
                 description={project.description}
                 tech_stack_arr={project.tech_stack}
                 duration={project.duration}

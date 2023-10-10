@@ -1,19 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Header from "../components/Header";
 import MainContainer from "../components/MainContainer";
 import Footer from "../components/Footer";
 import { usePortfolioContext } from "../components/PortfolioContext";
-import ProjectRow from "../components/ProjectRow";
-import Search from "../components/Search";
 import EducationCard from "../components/EducationCard";
 
 const ProjectsPage = () => {
-  const { pageVisits, dark, changeTheme, education } = usePortfolioContext();
+  const { dark, changeTheme, education } = usePortfolioContext();
   const [searchTerm, setSearchTerm] = useState("");
 
   return (
     <>
-      <Header pageVisits={pageVisits} dark={dark} changeTheme={changeTheme} />
+      <Header dark={dark} changeTheme={changeTheme} />
       <MainContainer>
         <div className="mx-4 lg:mx-0">
           <h1 className="text-xl lg:text-2xl font-bold mb-1 text-center lg:text-left">
