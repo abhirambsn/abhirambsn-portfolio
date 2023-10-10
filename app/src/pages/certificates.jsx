@@ -7,7 +7,6 @@ import CertificateCard from "../components/CertificateCard";
 
 const CertificatesPage = () => {
   const { dark, changeTheme, certificates } = usePortfolioContext();
-  console.log(certificates);
 
   return (
     <>
@@ -24,7 +23,7 @@ const CertificatesPage = () => {
               key={i}
               name={certificate.name}
               description={certificate.description}
-              image={certificate.image?.fields.url}
+              image={certificate.image?.fields.file.url}
               url={certificate.url}
               awarded_by={certificate.awarded_by}
               awarded_on={certificate.awarded_on}

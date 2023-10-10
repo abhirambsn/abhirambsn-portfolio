@@ -7,13 +7,13 @@ const useContentful = () => {
     host: "cdn.contentful.com",
   });
 
-  const getData = async (name) => {
+  const getData = async (name, returnSingleObjectAsArray = false) => {
     try {
       const entries = await client.getEntries({
         content_type: name,
         select: "fields",
       });
-      return entries.items.length === 1
+      return entries.items.length === 1 && returnSingleObjectAsArray
         ? entries.items[0].fields
         : entries.items.map((item) => item.fields);
     } catch (error) {

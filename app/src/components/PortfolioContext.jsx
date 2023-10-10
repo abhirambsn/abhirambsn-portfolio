@@ -22,7 +22,7 @@ export const PortfolioProvider = ({ children }) => {
 
   useEffect(() => {
     setLoading(true);
-    getData("myself").then((resp) => setMyself(resp));
+    getData("myself", true).then((resp) => setMyself(resp));
     getData("projects").then((resp) => setProjects(resp));
     getData("workExperience").then((resp) => setWorkExperience(resp));
     getData("education").then((resp) => setEducation(resp));

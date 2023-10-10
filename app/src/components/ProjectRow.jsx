@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
 import Pill from "./Pill";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
+import ReactMarkdown from 'react-markdown'
 
 const colorMapping = {
   docker: "blue",
@@ -36,7 +37,7 @@ const ProjectRow = ({
           <FontAwesomeIcon icon={icon} size="xl" />
           <span className="text-white font-semibold text-lg">{title}</span>
         </div>
-        <p className="mt-5 text-justify">{description}</p>
+        <ReactMarkdown className="mt-5 text-justify">{description}</ReactMarkdown>
       </Card>
       <div className="flex-1 w-full lg:w-auto flex flex-col gap-1">
         <Card className="group hover:bg-sky-500 hover:cursor-pointer flex flex-col gap-2 focus-xs">

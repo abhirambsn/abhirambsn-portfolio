@@ -2,6 +2,7 @@ import React from "react";
 import Card from "./Card";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import ReactMarkdown from 'react-markdown'
 
 const CertificateCard = ({
   name,
@@ -20,7 +21,7 @@ const CertificateCard = ({
       />
       <div className="flex flex-col mx-1 p-2 space-y-3">
         <h3 className="text-xl font-bold">{name}</h3>
-        <p className="text-justify text-sm">{description}</p>
+        <ReactMarkdown className="text-justify text-sm">{description}</ReactMarkdown>
         <p className="flex flex-col space-y-1">
           <span className="text-sm text-gray-200">{awarded_by}</span>
           <span className="text-xs text-gray-300">{awarded_on}</span>
