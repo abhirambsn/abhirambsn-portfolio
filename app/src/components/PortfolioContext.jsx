@@ -11,6 +11,7 @@ export const PortfolioProvider = ({ children }) => {
   const [certificates, setCertificates] = useState([]);
   const [education, setEducation] = useState([]);
   const [myself, setMyself] = useState({});
+  const [skills, setSkills] = useState([]);
   const [loading, setLoading] = useState(true);
   const [dark, setDark] = useState(true);
   const { getData } = useContentful();
@@ -27,6 +28,7 @@ export const PortfolioProvider = ({ children }) => {
     getData("workExperience").then((resp) => setWorkExperience(resp));
     getData("education").then((resp) => setEducation(resp));
     getData("certificates").then((resp) => setCertificates(resp));
+    getData("skill").then((resp) => setSkills(resp));
     setLoading(false);
   }, []);
   return (
@@ -39,6 +41,7 @@ export const PortfolioProvider = ({ children }) => {
         certificates,
         education,
         myself,
+        skills,
       }}
     >
       {loading ? (

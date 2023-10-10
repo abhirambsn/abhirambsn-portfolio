@@ -11,24 +11,21 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faGithub,
   faLinkedin,
-  faGitlab,
   faYoutube,
 } from "@fortawesome/free-brands-svg-icons";
 import {
   faArrowRight,
   faDesktop,
   faDownload,
-  faGlobe,
 } from "@fortawesome/free-solid-svg-icons";
 import { Icon } from "@iconify/react";
 import ProjectRow from "../components/ProjectRow";
 import SkillBar from "../components/SkillBar";
 import WorkExRow from "../components/WorkExRow";
 import { usePortfolioContext } from "../components/PortfolioContext";
-import useContentful from "../hooks/useContentful";
 
 const HomePage = () => {
-  const { dark, changeTheme, projects, workExp, myself } =
+  const { dark, changeTheme, projects, workExp, myself, skills } =
     usePortfolioContext();
 
   return (
@@ -169,33 +166,39 @@ const HomePage = () => {
         <div className="mx-4 lg:mx-0 grid grid-cols-1 lg:grid-cols-3 gap-4 w-full lg:space-x-2">
           <Card className="flex-1 flex flex-col gap-5">
             <h2 className="text-lg text-white">Cybersecurity</h2>
-            <SkillBar
-              name="Penetration Testing"
-              percentage={"50"}
-              color={"green"}
-            />
-            <SkillBar
-              name="Penetration Testing"
-              percentage={"100"}
-              color="blue"
-            />
-            <SkillBar
-              name="Penetration Testing"
-              percentage={"50"}
-              color="purple"
-            />
+            {skills
+              .filter((s) => s.category === "Cybersecurity")
+              .map((skill) => (
+                <SkillBar
+                  name={skill.name}
+                  percentage={skill.percentage}
+                  color={skill.color}
+                />
+              ))}
           </Card>
           <Card className="flex-1 flex flex-col gap-5">
             <h2 className="text-lg text-white">Development and Devops</h2>
-            <SkillBar name="Javascript" percentage={"50"} color={"indigo"} />
-            <SkillBar name="Python" percentage={"50"} color="yellow" />
-            <SkillBar name="Bash" percentage={"50"} color="orange" />
+            {skills
+              .filter((s) => s.category === "Development and Devops")
+              .map((skill) => (
+                <SkillBar
+                  name={skill.name}
+                  percentage={skill.percentage}
+                  color={skill.color}
+                />
+              ))}
           </Card>
           <Card className="flex-1 flex flex-col gap-5">
             <h2 className="text-lg text-white">Soft Skills</h2>
-            <SkillBar name="Javascript" percentage={"50"} color="teal" />
-            <SkillBar name="Python" percentage={"50"} color="cyan" />
-            <SkillBar name="Bash" percentage={"50"} />
+            {skills
+              .filter((s) => s.category === "Soft Skills")
+              .map((skill) => (
+                <SkillBar
+                  name={skill.name}
+                  percentage={skill.percentage}
+                  color={skill.color}
+                />
+              ))}
           </Card>
         </div>
 
